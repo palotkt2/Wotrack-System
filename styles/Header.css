@@ -41,7 +41,7 @@
   /* Contenedor del menú */
   .burger-menu-content {
     position: absolute;
-    top: 60px;
+    top: 80px;
     right: 0;
     width: 200px;
     background-color: white;
@@ -109,7 +109,7 @@
 
 .burger-menu-content {
   position: absolute;
-  top: 4rem;
+  top: 5rem;
   background-color: white;
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
@@ -159,8 +159,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
   background: none;
   border: none;
@@ -185,8 +185,8 @@
 /* Contenedor del menú */
 .burger-menu-content {
   position: absolute;
-  top: 60px;
-  width: 200px;
+  top: 80px;
+  width: 300px;
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -313,4 +313,14 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   color: #333; /* Darker font color for better visibility */
+}
+/* Add styles for the logo */
+.logo {
+  height: 60px; /* Adjust the height as needed */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Slightly enlarge the logo on hover */
 }

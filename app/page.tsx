@@ -71,10 +71,9 @@ export default function Home() {
 
   return (
     <main className="container mx-auto p-4 max-w-2xl">
-      <h1 className="text-4xl font-bold text-center mb-8 text-blue-600">
+      <h1 className="text-4xl font-bold text-center mb-4 text-blue-600">
         WO Status
       </h1>
-
       <OrderForm onSearch={handleSearch} />
 
       {searchLoading && (

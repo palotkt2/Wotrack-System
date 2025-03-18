@@ -7,7 +7,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'TrackOrders Pro',
+  title: 'Track Orders Pro',
   description: 'WO Track System',
 };
 
@@ -22,7 +22,7 @@ export default function RootLayout({ children }: LayoutProps) {
       <body className={`${inter.className} bg-white text-gray-900`}>
         <AuthProvider>
           <Header />
-          <main className="container mx-auto p-4 bg-white">
+          <main className="min-h-screen container p-4 bg-white">
             {children}
           </main>
         </AuthProvider>

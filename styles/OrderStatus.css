@@ -128,3 +128,9 @@ input {
   color: #333; /* Darker color for better visibility */
   font-size: 2rem; /* Ensure visibility on mobile devices */
 }
+table.orders-table {
+  color: #000;
+}
+.orders-table {
+  color: #000;
+}

@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-
+import { motion } from 'framer-motion';
 export default function OrderForm({ onSearch, userId }) {
   const [input, setInput] = useState('');
   const [error, setError] = useState('');
@@ -35,7 +35,7 @@ export default function OrderForm({ onSearch, userId }) {
     }
 
     if (!validateOrderId(cleanedId)) {
-      setError('Invalid format (valid example: ABC-1234)');
+      setError('Invalid format (valid example: 230596)');
       return;
     }
 
@@ -44,23 +44,25 @@ export default function OrderForm({ onSearch, userId }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="flex flex-col gap-2">
-        <input
-          type="tel"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Example: 230596"
-          className="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-        />
-        <button
-          type="submit"
-          className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-        >
-          Show Status
-        </button>
-      </div>
-      {error && <p className="text-red-600 text-sm">{error}</p>}
-    </form>
+    <motion.div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="flex flex-col gap-2">
+          <input
+            type="tel"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Example: 230596"
+            className="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+          />
+          <button
+            type="submit"
+            className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+          >
+            Show Status
+          </button>
+        </div>
+        {error && <p className="text-red-600 text-sm">{error}</p>}
+      </form>
+    </motion.div>
   );
 }

@@ -34,42 +34,44 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container min-h-screen flex items-center justify-center">
-      <form onSubmit={handleLogin} className="login-form">
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            className="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none w-full"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            className="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none w-full"
-          />
-        </div>
-        <button
-          type="submit"
-          className={`p-3 bg-blue-500 text-white rounded-lg w-full ${isLoading ? 'animate-pulse' : ''}`}
-          disabled={isLoading}
-        >
-          {isLoading ? 'Logging in...' : 'Login'}
-        </button>
-      </form>
-    </div>
+    <motion.div>
+      <div className="login-container min-h-screen flex items-center justify-top">
+        <form onSubmit={handleLogin} className="login-form">
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none w-full"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              className="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none w-full"
+            />
+          </div>
+          <button
+            type="submit"
+            className={`p-3 bg-blue-500 text-white rounded-lg w-full ${isLoading ? 'animate-pulse' : ''}`}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Logging in...' : 'Login'}
+          </button>
+        </form>
+      </div>
+    </motion.div>
   );
 }

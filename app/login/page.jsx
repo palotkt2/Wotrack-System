@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import AuthForm from '../../components/AuthForm';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import '../../styles/Login.css'; // Import the CSS file
 
 export default function LoginPage() {
@@ -34,7 +35,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <motion.div
+      className="min-h-screen flex items-top justify-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-lg">
         <div className="text-center">
           <h2 className="mt-6 text-3xl font-bold text-gray-900">Login</h2>
@@ -59,7 +66,8 @@ export default function LoginPage() {
           <div className="lightbox-content">
             <h2 className="text-gray-900">Request Access</h2>
             <p className="text-gray-700">
-              Please contact your sales representative for access.
+              Need Assistance? (888) 700-9888 Please contact your sales
+              representative for access credentials.
             </p>
             <button
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
@@ -70,6 +78,6 @@ export default function LoginPage() {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

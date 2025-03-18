@@ -31,3 +31,14 @@
 .text-class {
   color: #333; /* Darker color for better visibility */
 }
+
+/* Add styles for the logo */
+.logo {
+  height: 100px; /* Adjust the height as needed */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Slightly enlarge the logo on hover */
+}
