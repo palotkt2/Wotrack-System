@@ -1,4 +1,4 @@
-.login-container {
+.order-form-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   background-color: #f9fafb;
 }
 
-.login-form {
+.order-form {
   max-width: 400px;
   width: 100%;
   padding: 2rem;
@@ -15,10 +15,10 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.login-form input {
+.order-form input {
   color: #333; /* Darker font color for better visibility */
 }
 
-.login-form button:disabled {
+.order-form button:disabled {
   background-color: #a0aec0; /* Disabled button color */
 }

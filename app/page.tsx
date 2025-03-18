@@ -74,7 +74,7 @@ export default function Home() {
       <h1 className="text-4xl font-bold text-center mb-4 text-blue-600">
         WO Status
       </h1>
-      <OrderForm onSearch={handleSearch} />
+      <OrderForm onSearch={handleSearch} userId={user?.id} />
 
       {searchLoading && (
         <div className="text-center my-8">

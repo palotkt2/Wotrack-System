@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
-import './OrdersHistory.css'; // Import the CSS file
+import '../styles/OrdersHistory.css'; // Import the CSS file
 
 export default function OrderHistory() {
   const statusHistory = {

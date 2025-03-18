@@ -1,13 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import '../styles/OrderForm.css'; // Import the CSS file
 export default function OrderForm({ onSearch, userId }) {
   const [input, setInput] = useState('');
   const [error, setError] = useState('');
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    // Función para obtener las órdenes del usuario logueado
+    // Function to obtain the orders of the logged-in user
     const fetchUserOrders = async () => {
       try {
         const response = await getUserOrders(userId);

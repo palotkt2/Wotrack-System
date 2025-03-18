@@ -57,7 +57,7 @@ export default function Header() {
 
           {!isLoginPage && (
             <div className="flex items-center gap-3">
-              {/* Botón de menú hamburguesa */}
+              {/* Hamburger menu button */}
               <button onClick={toggleMenu} className="burger-menu-button">
                 <span className={`icon-wrapper ${isOpen ? 'rotate' : ''}`}>
                   {isOpen ? (
@@ -68,7 +68,7 @@ export default function Header() {
                 </span>
               </button>
 
-              {/* Menú desplegable */}
+              {/* Dropdown menu */}
               <div
                 ref={menuRef}
                 className={`burger-menu-content ${isOpen ? 'open' : ''}`}
@@ -96,7 +96,7 @@ export default function Header() {
                 </ul>
               </div>
 
-              {/* Opciones de usuario */}
+              {/* User options */}
               {user ? (
                 <>
                   <span className="px-3 py-2 flex justify-center  items-center text-gray-600">

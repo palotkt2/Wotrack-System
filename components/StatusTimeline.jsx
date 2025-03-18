@@ -9,7 +9,7 @@ export default function StatusTimeline({ history }) {
     Shipped: 'bg-green-100 text-white-800',
     Hold: 'bg-blue-100 text-white-800',
   };
-  // Verificar si history existe y es un array
+  // Check if history exists and is an array
   if (!Array.isArray(history) || history.length === 0) {
     return (
       <div className="text-gray-500 text-center py-4">No changes available</div>

@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import './Login.css'; // Import the CSS file
+import '../styles/Login.css'; // Import the CSS file
 
 export default function Login() {
   const [email, setEmail] = useState('');

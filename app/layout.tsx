@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google';
-import { ReactNode } from 'react'; // Importación necesaria
+import { ReactNode } from 'react'; // Necessary import
 import Header from '../components/Header';
 import AuthProvider from '../context/AuthContext';
 import './globals.css';
@@ -11,7 +11,7 @@ export const metadata = {
   description: 'WO Track System',
 };
 
-// Definir tipo para las props
+// Define type for props
 interface LayoutProps {
   children: ReactNode;
 }

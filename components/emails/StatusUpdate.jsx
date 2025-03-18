@@ -46,9 +46,9 @@ const StatusUpdate = ({ order, user }) => (
 
           <Section style={footerSection}>
             <Text style={footerText}>
-              ¿Preguntas? Contacta a nuestro equipo de soporte en{' '}
+              Questions? Contact our sales team at{' '}
               <Link href="mailto:info@benchpro.com" style={linkStyle}>
-                soporte@tudominio.com
+                info@benchpro.com
               </Link>
             </Text>
           </Section>
@@ -58,7 +58,7 @@ const StatusUpdate = ({ order, user }) => (
   </Html>
 );
 
-// ============= ESTILOS CORREGIDOS =============
+// ============= CORRECTED STYLES =============
 const bodyStyle = {
   backgroundColor: '#f3f4f6',
   margin: 0,
@@ -71,7 +71,7 @@ const containerStyle = {
   margin: '0 auto',
   backgroundColor: '#ffffff',
   borderRadius: '8px',
-  overflow: 'hidden', // ✅ Corrección aplicada (comilla simple añadida)
+  overflow: 'hidden', // ✅ Correction applied (single quote added)
 };
 
 const headerSection = {

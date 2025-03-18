@@ -20,7 +20,7 @@ export async function POST(request) {
 
     if (rows.length === 0) {
       return NextResponse.json(
-        { success: false, error: 'Credenciales inválidas' },
+        { success: false, error: 'Invalid credentials' },
         { status: 401 }
       );
     }
@@ -39,7 +39,7 @@ export async function POST(request) {
   } catch (error) {
     console.error('Login API Error:', error);
     return NextResponse.json(
-      { success: false, error: 'Error en el servidor' },
+      { success: false, error: 'Server error 500' },
       { status: 500 }
     );
   } finally {
