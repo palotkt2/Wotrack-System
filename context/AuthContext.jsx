@@ -22,7 +22,7 @@ export default function AuthProvider({ children }) {
         setLoading(false);
       }
     };
-    
+
     checkAuth();
   }, []);
 
@@ -33,7 +33,7 @@ export default function AuthProvider({ children }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
       });
-      
+
       const data = await response.json();
       if (response.ok) {
         const userData = data.user;

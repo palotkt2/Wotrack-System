@@ -1,9 +1,13 @@
 'use client';
 
+import { FaShippingFast, FaCog, FaPauseCircle } from 'react-icons/fa'; // Import the icons
+import '../styles/OrderStatus.css'; // Import the CSS file
+
 export default function StatusTimeline({ history }) {
   const statusHistory = {
     Processing: 'bg-yellow-100 text-yellow-800',
     Shipped: 'bg-green-100 text-white-800',
+    Hold: 'bg-blue-100 text-white-800',
   };
   // Verificar si history existe y es un array
   if (!Array.isArray(history) || history.length === 0) {
@@ -20,9 +24,18 @@ export default function StatusTimeline({ history }) {
           <div className="space-y-1">
             <h3 className="order-status-history font-semibold text-gray-900">
               <span
-                className={`order-status-badge ${statusHistory[event.status]}`}
+                className={`order-status-badge ${statusHistory[event.status]} flex items-center justify-center`}
               >
                 {event.status}
+                {event.status === 'Shipped' && (
+                  <FaShippingFast className="icon-shipping-class ml-2 text-lg text-green-500" />
+                )}
+                {event.status === 'Processing' && (
+                  <FaCog className="icon-processing-class ml-2 text-lg text-yellow-500" />
+                )}
+                {event.status === 'Hold' && (
+                  <FaPauseCircle className="icon-hold-class ml-2 text-lg text-blue-500" />
+                )}
               </span>
             </h3>
             <time className="text-sm text-gray-600">

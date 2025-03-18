@@ -38,12 +38,12 @@ export default function Home() {
     setSearchLoading(true);
     try {
       const response = await fetch(`/api/orders?orderId=${orderId}`);
-      
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || 'Error searching for order');
       }
-      
+
       const data: OrderType = await response.json();
       setOrder(data);
       setError('');
@@ -74,21 +74,21 @@ export default function Home() {
       <h1 className="text-4xl font-bold text-center mb-8 text-blue-600">
         WO Status
       </h1>
-      
+
       <OrderForm onSearch={handleSearch} />
-      
+
       {searchLoading && (
         <div className="text-center my-8">
           <div className="animate-spin inline-block w-8 h-8 border-4 border-blue-500 rounded-full border-t-transparent" />
         </div>
       )}
-      
+
       {error && (
         <div className="bg-red-100 border-red-400 text-red-700 p-4 rounded-lg mb-4">
           ⚠️ {error}
         </div>
       )}
-      
+
       {order && <OrderStatus order={order} />}
     </main>
   );

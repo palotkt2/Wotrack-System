@@ -23,7 +23,7 @@
 .order-status-badge {
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #333; /* Darker font color for better visibility */
 }
 
@@ -107,4 +107,24 @@ input::-ms-input-placeholder {
 /* Add styles for input text color */
 input {
   color: #7d7d7d; /* Darker font color for better visibility */
+}
+/* Add styles for icon and text */
+.icon-shipping-class {
+  color: #333; /* Darker color for better visibility */
+  font-size: 2rem; /* Ensure visibility on mobile devices */
+}
+
+.icon-processing-class {
+  color: #333; /* Darker color for better visibility */
+  font-size: 2rem; /* Ensure visibility on mobile devices */
+}
+/* Add styles for icon and text */
+.icon-shipping-class {
+  color: #333; /* Darker color for better visibility */
+  font-size: 2rem; /* Ensure visibility on mobile devices */
+}
+
+.icon-hold-class {
+  color: #333; /* Darker color for better visibility */
+  font-size: 2rem; /* Ensure visibility on mobile devices */
 }

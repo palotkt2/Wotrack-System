@@ -1,0 +1,39 @@
+.orders-history-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f9fafb;
+}
+
+.orders-history-page-container h1 {
+  color: #333; /* Darker color for better visibility */
+}
+
+.orders-history-page-container p {
+  color: #333; /* Darker color for better visibility */
+}
+
+.orders-table {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.orders-table th,
+.orders-table td {
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.orders-table th {
+  background-color: #f3f4f6;
+  color: #333; /* Darker color for better visibility */
+}
+
+.orders-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}

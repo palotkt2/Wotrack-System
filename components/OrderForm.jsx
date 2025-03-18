@@ -11,7 +11,7 @@ export default function OrderForm({ onSearch, userId }) {
     const fetchUserOrders = async () => {
       try {
         const response = await getUserOrders(userId);
-        setOrders(response.orders);
+        setOrders(response.user_orders);
       } catch (error) {
         console.error('Error fetching user orders:', error);
       }
@@ -47,7 +47,7 @@ export default function OrderForm({ onSearch, userId }) {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="flex flex-col gap-2">
         <input
-          type="text"
+          type="tel"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Example: 230596"

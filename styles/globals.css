@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add any global styles here */
+
+.shake {
+  @apply animate-shake;
+}
+
+.spin {
+  @apply animate-spin;
+}
+
+/* Add styles for icon and text */
+.icon-shipping-class {
+  color: #333; /* Darker color for better visibility */
+  font-size: 1.5rem; /* Ensure visibility on mobile devices */
+}
+
+.icon-processing-class {
+  color: #333; /* Darker color for better visibility */
+  font-size: 1.5rem; /* Ensure visibility on mobile devices */
+}
+
+.icon-hold-class {
+  color: #333; /* Darker color for better visibility */
+  font-size: 1.5rem; /* Ensure visibility on mobile devices */
+}
+
+.text-class {
+  color: #333; /* Darker color for better visibility */
+}

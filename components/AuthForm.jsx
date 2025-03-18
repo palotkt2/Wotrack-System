@@ -1,4 +1,4 @@
-'use client';  // <-- Las comillas simples están bien, pero asegúrate de no tener errores de formato
+'use client';
 import { useState } from 'react';
 
 export default function AuthForm({ onSubmit, error, buttonText }) {
@@ -23,7 +23,10 @@ export default function AuthForm({ onSubmit, error, buttonText }) {
     <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
       <div className="rounded-md shadow-sm space-y-4">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
             E-mail
           </label>
           <input
@@ -36,9 +39,12 @@ export default function AuthForm({ onSubmit, error, buttonText }) {
             onChange={handleChange}
           />
         </div>
-        
+
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-700"
+          >
             Password
           </label>
           <input

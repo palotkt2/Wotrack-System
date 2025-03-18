@@ -1,14 +1,13 @@
 'use client';
-import { useState } from 'react';
 import StatusTimeline from './StatusTimeline';
-import './OrderStatus.css'; // Import the CSS file
+import { FaShippingFast, FaCog, FaPauseCircle } from 'react-icons/fa'; // Import the icons
+import '../styles/OrderStatus.css'; // Import the CSS file
 
 export default function OrderStatus({ order }) {
-  const [input, setInput] = useState(''); // Define the input state
-
   const statusColors = {
     Processing: 'bg-yellow-100 text-yellow-800',
     Shipped: 'bg-green-100 text-white-800',
+    Hold: 'bg-blue-100 text-black-800',
   };
 
   return (
@@ -16,8 +15,19 @@ export default function OrderStatus({ order }) {
       <div className="order-status-header">
         <h2 className="order-status-title">
           WO# {order.order_id}
-          <span className={`order-status-badge ${statusColors[order.status]}`}>
-            {order.status}
+          <span
+            className={`order-status-badge ${statusColors[order.status]} flex items-center justify-center`}
+          >
+            {order.status === 'Shipped' && (
+              <FaShippingFast className="icon-shipping-class mr-2 text-2xl text-green-500" />
+            )}
+            {order.status === 'Processing' && (
+              <FaCog className="icon-processing-class mr-2 text-2xl text-yellow-500" />
+            )}
+            {order.status === 'Hold' && (
+              <FaPauseCircle className="icon-hold-class mr-2 text-2xl text-blue-500" />
+            )}
+            <span className="text-class">{order.status}</span>
           </span>
         </h2>
       </div>

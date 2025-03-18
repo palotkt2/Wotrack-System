@@ -18,7 +18,7 @@ async function getUserOrders(orderId) {
   });
 
   const [orderRows] = await connection.execute(
-    'SELECT * FROM orders WHERE order_id = ?',
+    'SELECT * FROM user_orders WHERE order_id = ?',
     [orderId]
   );
 
@@ -58,53 +58,91 @@ async function getUserOrders(orderId) {
   return order;
 }
 
+async function getOrderHistory(userId) {
+  const connection = await mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+  });
+
+  const [rows] = await connection.execute(
+    'SELECT * FROM user_orders WHERE user_id = ?',
+    [userId]
+  );
+
+  await connection.end();
+  return rows;
+}
+
 export async function GET(request) {
+  let connection;
   try {
     const { searchParams } = new URL(request.url);
+    const userId = searchParams.get('userId');
     const rawOrderId = searchParams.get('orderId') || '';
     const orderId = sanitizeOrderId(rawOrderId);
 
-    if (
-      !orderId ||
-      orderId.length < 6 ||
-      orderId.length > MAX_ORDER_ID_LENGTH
-    ) {
-      return NextResponse.json({ error: 'Invalid WO ID' }, { status: 400 });
-    }
+    connection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+    });
 
-    const order = await getUserOrders(orderId);
+    if (orderId) {
+      if (orderId.length < 6 || orderId.length > MAX_ORDER_ID_LENGTH) {
+        return NextResponse.json({ error: 'Invalid WO ID' }, { status: 400 });
+      }
 
-    if (!order) {
+      const order = await getUserOrders(orderId);
+
+      if (!order) {
+        return NextResponse.json(
+          { error: `WO# ${orderId} not found` },
+          { status: 404 }
+        );
+      }
+
+      const emailHtml = await render(
+        <StatusUpdate
+          order={order}
+          user={{
+            name: order.customer,
+            email: order.customerEmail,
+          }}
+        />
+      );
+
+      if (order.customerEmail) {
+        await sendEmail({
+          to: order.customerEmail,
+          subject: `Status Update - Order #${order.order_id}`,
+          html: emailHtml,
+        });
+      }
+
+      return NextResponse.json(order, {
+        headers: {
+          'Cache-Control':
+            'public, s-maxage=3600, stale-while-revalidate=86400',
+          'CDN-Cache-Control': 'public, s-maxage=3600',
+        },
+      });
+    } else if (userId) {
+      const orders = await getOrderHistory(userId);
+
+      if (orders.length === 0) {
+        return NextResponse.json({ orders: [] });
+      }
+
+      return NextResponse.json({ orders });
+    } else {
       return NextResponse.json(
-        { error: `WO# ${orderId} not found` },
-        { status: 404 }
+        { error: 'Order ID is required' },
+        { status: 400 }
       );
     }
-
-    const emailHtml = await render(
-      <StatusUpdate
-        order={order}
-        user={{
-          name: order.customer,
-          email: order.customerEmail,
-        }}
-      />
-    );
-
-    if (order.customerEmail) {
-      await sendEmail({
-        to: order.customerEmail,
-        subject: `Status Update - Order #${order.order_id}`,
-        html: emailHtml,
-      });
-    }
-
-    return NextResponse.json(order, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
-        'CDN-Cache-Control': 'public, s-maxage=3600',
-      },
-    });
   } catch (error) {
     console.error('API Error:', error);
     return NextResponse.json(
@@ -115,5 +153,9 @@ export async function GET(request) {
       },
       { status: 500 }
     );
+  } finally {
+    if (connection) {
+      await connection.end();
+    }
   }
 }
