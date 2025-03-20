@@ -1,0 +1,26 @@
+{
+    "orders": [
+      {
+        "id": "230596",
+        "customer": "PAC",
+        "customerEmail": "humberto@benchpro.com",
+        "status": "In Progress",
+        "lastUpdate": "2025-02-15T10:30:00",
+        "items": [
+          {"name": "KF3060", "quantity": 2},
+          {"name": "TS1260", "quantity": 1},
+          {"name": "D6", "quantity": 2}
+        ]
+      },
+      {
+        "id": "230597",
+        "customer": "Grainger",
+        "customerEmail": "humberto@benchpro.com",
+        "status": "Delivered",
+        "lastUpdate": "2025-02-14T15:45:00",
+        "items": [
+          {"name": "RF3672", "quantity": 3}
+        ]
+      }
+    ]
+  }
