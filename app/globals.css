@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.bg-blue-dots {
+  background-color: var(--color-blue-500);
+  height: 20px;
+  width: 20px;
+  top: 10px;
+  left: 2px;
+}

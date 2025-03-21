@@ -20,7 +20,7 @@ export default function StatusTimeline({ history }) {
     <div className="ml-4 border-l-2 border-gray-200 pl-6">
       {history.map((event, index) => (
         <div key={index} className="relative pb-6">
-          <div className="absolute -left-[9px] top-1 w-3.5 h-3.5 bg-blue-500 rounded-full border-2 border-white" />
+          <div className="absolute -left-[9px] top-1 w-3.5 h-3.5 bg-blue-dots rounded-full border-3 border-white" />
           <div className="space-y-1">
             <h3 className="order-status-history font-semibold text-gray-900">
               <span

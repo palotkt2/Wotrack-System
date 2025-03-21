@@ -9,7 +9,14 @@ export default function OrderStatus({ order }) {
     Shipped: 'bg-green-100 text-white-800',
     Hold: 'bg-blue-100 text-black-800',
   };
-
+  const getTrackingUrl = (carrier, trackingNumber) => {
+    if (carrier.toLowerCase() === 'fedex') {
+      return `https://www.fedex.com/apps/fedextrack/?tracknumbers=${trackingNumber}`;
+    } else if (carrier.toLowerCase() === 'ups') {
+      return `https://www.ups.com/track?tracknum=${trackingNumber}`;
+    }
+    return '#';
+  };
   return (
     <div className="order-status-container">
       <div className="order-status-header">
@@ -60,27 +67,21 @@ export default function OrderStatus({ order }) {
             </div>
             <div>
               <h3 className="order-status-subtitle">Tracking Number</h3>
-              <p>{order.tracking_number}</p>
+              <p>
+                <a
+                  href={getTrackingUrl(order.carrier, order.tracking_number)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  {order.tracking_number}
+                </a>
+              </p>
             </div>
           </div>
         )}
 
         <StatusTimeline history={order.history} />
-
-        <div>
-          <h3 className="order-status-subtitle">Products</h3>
-          <ul className="order-status-products">
-            {order.items &&
-              order.items.map((item, index) => (
-                <li key={index} className="order-status-product-item">
-                  <span>{item.product_name}</span>
-                  <span className="order-status-product-quantity">
-                    {item.quantity} EA
-                  </span>
-                </li>
-              ))}
-          </ul>
-        </div>
       </div>
     </div>
   );
